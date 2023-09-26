@@ -6,8 +6,8 @@ import '../../src/css/upload.css';
 
 const SecureUploads = () => {
 
-  const [title, setTitle] = useState("");
-  const [post, setPost] = useState("");
+  const [title, setTitle] = useState(null);
+  const [post, setPost] = useState(null);
   const [img, setImg] = useState(null);
   const [video, setVideo] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -61,7 +61,7 @@ const SecureUploads = () => {
     };
     
       // Send backend api request
-      await axios.post(`http://localhost:5000/api/videos/`, newPost)
+      await axios.post(`${process.env.REACT_APP_BACKEND_BASEURL}/api/videos/`, newPost)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
       console.log(newPost);
